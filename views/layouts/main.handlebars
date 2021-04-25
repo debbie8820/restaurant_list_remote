@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Restaurants in Taiwan</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+          width="30" height="30" class="d-inline-block align-top" alt="Top Restaurants">
+        Top Restaurants
+      </a>
+    </div>
+  </nav>
+
+</head>
+
+
+
+<body>
+  <div class="banner"></div>
+
+
+  <!-- search bar -->
+  <div class="container search-bar">
+    <div class="search-bar-outer">
+      <div class="search-bar-inner">
+        <form action="/search">
+          <h4 class="mb-2">搜尋餐廳</h4>
+          <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="Restaurant Name..."
+              aria-label="Restaurant Name..." value="" aria-describedby="search-button">
+            <div class="input-group-append">
+              <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {{!-- restaurant list --}}
+  {{{body}}}
+
+
+  <script src='/javascripts/jquery-3.3.1.js'></script>
+  <script src='/javascripts/popper.js'></script>
+  <script src='/javascripts/bootstrap.js'></script>
+</body>
+
+</html>
