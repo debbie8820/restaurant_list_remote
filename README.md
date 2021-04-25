@@ -22,5 +22,5 @@
 
 4. 啟動伺服器並執行專案
 `npm run dev`
-當終端機顯示`ready!`時即可到###http://localhost:3000 查看專案
+當終端機顯示`ready!`時即可到http://localhost:3000 查看專案
 
