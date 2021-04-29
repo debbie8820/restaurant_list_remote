@@ -1,12 +1,25 @@
 const express = require('express')
-const app = express()
-const port = 3000
+const mongoose = require('mongoose')
 const restaurantList = require('./restaurant.json')
-
 const exphbs = require('express-handlebars')
+
+const app = express()
+
+mongoose.connect('mongodb://localhost/restaurant_list', { useNewUrlParser: true, useUnifiedTopology: true })
+
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+
+db.once('open', () => {
+  console.log('mongodb ready!')
+})
 
 app.engine('handlebars', exphbs({ defaultLayout: "main" }))
 app.set('view engine', 'handlebars')
+
 
 app.use(express.static('public'))
 
@@ -32,4 +45,4 @@ app.get("/search", (req, res) => {
   res.render("index", { restaurants: searchedStores, keyword })
 })
 
-app.listen(port, () => console.log("Server is ready!"))
+app.listen(3000, () => console.log("Server is ready!"))
