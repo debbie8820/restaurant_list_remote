@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const restaurantList = require('./restaurant.json')
 const exphbs = require('express-handlebars')
+const Restaurant = require('./models/restaurant')
 
 const app = express()
 
@@ -23,8 +23,12 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
+//首頁
 app.get("/", (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find()
+    .lean()
+    .then((restaurants => res.render('index', { restaurants })))
+    .catch(error => { console.log(error) })
 })
 
 app.get("/restaurants/:id", (req, res) => {
