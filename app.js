@@ -99,6 +99,15 @@ app.post('/edit/:id/saved', (req, res) => {
     .catch(error => { console.log(error) })
 })
 
+//刪除功能
+app.get('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => { console.log(error) })
+})
+
 //瀏覽特定餐廳詳細資料(路由放最後因為放前面會出現cast ObjectId error)
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
