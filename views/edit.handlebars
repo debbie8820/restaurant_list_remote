@@ -1,0 +1,57 @@
+<div id="wrapper">
+  <div class="form-container">
+    <span class="form-heading">Edit restaurant info</span>
+    <form action="/edit/{{restaurant._id}}/saved" method="POST">
+      <div class="input-group">
+        <label for="name">餐廳名稱</label>
+        <input type="text" id="name" name="name" placeholder="燒肉吧" value={{restaurant.name}} required>
+      </div>
+      <div class="input-group">
+        <label for="name_en">英文名稱</label>
+        <input type="text" id="name_en" name="name_en" placeholder="Gusto Pizza" value={{restaurant.name_en}}>
+      </div>
+      <div class="input-group">
+        <label for="category">類別</label>
+        <input list="categories" name="category" id="category" value={{restaurant.category}} required>
+        <datalist id="categories">
+          <option value="義式餐廳">
+          <option value="中東料理">
+          <option value="日本料理">
+          <option value="酒吧">
+          <option value="咖啡">
+        </datalist>
+      </div>
+      <div class="input-group">
+        <label for="image">圖片網址</label>
+        <input type="text" id="image" name="image" placeholder="http://..." value={{restaurant.image}}>
+      </div>
+      <div class="input-group">
+        <label for="location">地點</label>
+        <input type="text" class="form-control" id="location" name="location" placeholder="台北市中正區連雲街 74 號"
+          value={{restaurant.location}}>
+      </div>
+      <div class="input-group">
+        <label for="phone">電話</label>
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="02 2355 7754"
+          value={{restaurant.phone}}>
+      </div>
+      <div class="input-group">
+        <label for="google_map">Google Map位置</label>
+        <input type="text" class="form-control" id="google_map" name="google_map" placeholder="http://..."
+          value={{restaurant.google_map}}>
+      </div>
+      <div class="input-group">
+        <label for="rating">評分</label>
+        <input type="text" class="form-control" id="rating" name="rating" placeholder="4.4" value={{restaurant.rating}}
+          required>
+      </div>
+      <div class="input-group">
+        <label for="description">餐廳描述</label>
+        <textarea class="form-control" id="description" name="description" placeholder="這是一間氣氛非凡的餐廳..."
+          value={{restaurant.description}}></textarea>
+      </div>
+
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>

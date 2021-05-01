@@ -1,12 +1,17 @@
 {{!-- partial template --}}
+<div>
+  <a href="/create">新增餐廳</a>
+</div>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
 
 
+
         {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
@@ -20,7 +25,7 @@
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
-
+              <a id="editButton" href="/restaurants/{{this._id}}/edit">修改餐廳資訊</a>
             </div>
           </div>
         </a>

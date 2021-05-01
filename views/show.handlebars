@@ -1,7 +1,18 @@
+<a id="editButton" href="/restaurants/{{specificRestaurant._id}}/edit">修改餐廳資訊</a>
 <div class="container">
   <div class="d-flex flex-column align-items-center">
     <h1 class="py-4 restaurant-show-title">{{specificRestaurant.name}}</h1>
     <div class="col-12 col-md-10 mx-auto">
+
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-star pr-1"></i>
+          評價：
+        </span>
+        {{specificRestaurant.rating}}
+      </p>
+
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>
