@@ -1,18 +1,23 @@
 <div id="wrapper">
   <div class="form-container">
-    <span class="form-heading">Edit restaurant info</span>
+    <div class="d-flex justify-content-center">
+      <span class="form-heading">編輯餐廳資訊</span>
+    </div>
     <form action="/edit/{{restaurant._id}}/saved" method="POST">
       <div class="input-group">
         <label for="name">餐廳名稱</label>
-        <input type="text" id="name" name="name" placeholder="燒肉吧" value={{restaurant.name}} required>
+        <input type="text" class="form-control" id="name" name="name" placeholder="燒肉吧" value={{restaurant.name}}
+          required>
       </div>
       <div class="input-group">
         <label for="name_en">英文名稱</label>
-        <input type="text" id="name_en" name="name_en" placeholder="Gusto Pizza" value={{restaurant.name_en}}>
+        <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Gusto Pizza"
+          value={{restaurant.name_en}}>
       </div>
       <div class="input-group">
         <label for="category">類別</label>
-        <input list="categories" name="category" id="category" value={{restaurant.category}} required>
+        <input list="categories" name="category" class="form-control" id="category" value={{restaurant.category}}
+          placeholder="美式" required>
         <datalist id="categories">
           <option value="義式餐廳">
           <option value="中東料理">
@@ -22,8 +27,9 @@
         </datalist>
       </div>
       <div class="input-group">
-        <label for="image">圖片網址</label>
-        <input type="text" id="image" name="image" placeholder="http://..." value={{restaurant.image}}>
+        <label for="image">圖片</label>
+        <input type="text" class="form-control" id="image" name="image" placeholder="http://..."
+          value={{restaurant.image}}>
       </div>
       <div class="input-group">
         <label for="location">地點</label>
@@ -36,7 +42,7 @@
           value={{restaurant.phone}}>
       </div>
       <div class="input-group">
-        <label for="google_map">Google Map位置</label>
+        <label for="google_map">Google Map</label>
         <input type="text" class="form-control" id="google_map" name="google_map" placeholder="http://..."
           value={{restaurant.google_map}}>
       </div>
@@ -50,8 +56,9 @@
         <textarea class="form-control" id="description" name="description" placeholder="這是一間氣氛非凡的餐廳..."
           value={{restaurant.description}}></textarea>
       </div>
-
-      <button type="submit">Save</button>
+      <div class="d-flex justify-content-center">
+        <button class="saveButton" type="submit">Save</button>
+      </div>
     </form>
   </div>
 </div>

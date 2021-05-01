@@ -1,17 +1,17 @@
-<a class="editButton" href="/restaurants/{{specificRestaurant._id}}/edit">修改資訊</a>
-<a class="deleteButton" href="/restaurants/{{specificRestaurant._id}}/delete">刪除餐廳</a>
 <div class="container">
   <div class="d-flex flex-column align-items-center">
     <h1 class="py-4 restaurant-show-title">{{specificRestaurant.name}}</h1>
+    <div class="d-flex justify-content-center">
+      <a class="show editButton" href="/restaurants/{{specificRestaurant._id}}/edit">修改資訊</a>
+      <a class="show deleteButton" href="/restaurants/{{specificRestaurant._id}}/delete">刪除餐廳</a>
+    </div>
     <div class="col-12 col-md-10 mx-auto">
-
-
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-star pr-1"></i>
           評價：
         </span>
-        {{specificRestaurant.rating}}
+        {{specificRestaurant.rating}}顆星
       </p>
 
       <p class="mb-1">

@@ -1,15 +1,11 @@
 {{!-- partial template --}}
-<div>
-  <a href="/create">新增餐廳</a>
-</div>
-
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
+      <a class="addButton" href="/create">新增餐廳</a>
+    </div>
+    <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
-
-
-
         {{#each restaurants}}
         <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
