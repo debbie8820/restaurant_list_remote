@@ -25,7 +25,7 @@
       </div>
       <div class="input-group">
         <label for="image">圖片</label>
-        <input type="text" class="form-control" id="image" name="image" placeholder="http://...">
+        <input type="url" class="form-control" id="image" name="image" placeholder="http://...">
       </div>
       <div class="input-group">
         <label for="location">地點</label>
@@ -33,15 +33,16 @@
       </div>
       <div class="input-group">
         <label for="phone">電話</label>
-        <input type="text" class="form-control" id="phone" name="phone" placeholder="0223557754">
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="0223557754">
       </div>
       <div class="input-group">
         <label for="google_map">Google Map</label>
-        <input type="text" class="form-control" id="google_map" name="google_map" placeholder="http://...">
+        <input type="url" class="form-control" id="google_map" name="google_map" placeholder="http://...">
       </div>
       <div class="input-group">
         <label for="rating">評分</label>
-        <input type="text" class="form-control" id="rating" placeholder="4.4" name="rating" required>
+        <input type="number" step="0.1" min="1" max="5" class="form-control" id="rating" placeholder="4.4" name="rating"
+          required>
       </div>
       <div class="input-group">
         <label for="description">餐廳描述</label>

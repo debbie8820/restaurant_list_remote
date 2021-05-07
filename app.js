@@ -82,6 +82,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 
 app.post('/edit/:id/saved', (req, res) => {
   const id = req.params.id
+  console.log(req.body.phone)
   return Restaurant.findById(req.params.id)
     .then((restaurant) => {
       restaurant.name = req.body.name
@@ -116,6 +117,5 @@ app.get('/restaurants/:id', (req, res) => {
     .then(specificRestaurant => res.render('show', { specificRestaurant }))
     .catch(error => { console.log(error) })
 })
-
 
 app.listen(3000, () => console.log('Server is ready!'))
