@@ -2,12 +2,14 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
-      <a class="addButton" href="/create">新增餐廳</a>
+      <form action="/restaurants/create">
+        <button class="addButton">新增餐廳</button>
+      </form>
     </div>
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurants}}
-        <a href="/{{this._id}}" class="text-secondary">
+        <a href="restaurants/show/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
