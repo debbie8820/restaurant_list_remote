@@ -3,7 +3,9 @@
     <h1 class="py-4 restaurant-show-title">{{specificRestaurant.name}}</h1>
     <div class="d-flex justify-content-center">
       <a class="show editButton" href="/restaurants/{{specificRestaurant._id}}/edit">修改資訊</a>
-      <a class="show deleteButton" href="/restaurants/{{specificRestaurant._id}}/delete">刪除餐廳</a>
+      <form action="/restaurants/{{specificRestaurant._id}}?_method=DELETE" method="POST" style="display:inline;">
+        <button class="show deleteButton" type="submit">刪除餐廳</button>
+      </form>
     </div>
     <div class="col-12 col-md-10 mx-auto">
       <p class="mb-1">

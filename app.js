@@ -3,8 +3,7 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
-const { urlencoded } = require('body-parser')
-
+const methodOverride = require('method-override')
 
 const app = express()
 
@@ -26,6 +25,7 @@ app.engine('handlebars', exphbs({ defaultLayout: "main" }))
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 //首頁
 app.get('/', (req, res) => {
@@ -34,7 +34,6 @@ app.get('/', (req, res) => {
     .then((restaurants => res.render('index', { restaurants })))
     .catch(error => { console.log(error) })
 })
-
 
 //搜尋功能
 app.get('/search', (req, res) => {
@@ -80,9 +79,8 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 
-app.post('/edit/:id/saved', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
-  console.log(req.body.phone)
   return Restaurant.findById(req.params.id)
     .then((restaurant) => {
       restaurant.name = req.body.name
@@ -96,12 +94,12 @@ app.post('/edit/:id/saved', (req, res) => {
       restaurant.description = req.body.description
       return restaurant.save()
     })
-    .then(() => { res.redirect(`/restaurants/${id}`) })
+    .then(() => { res.redirect(`/${id}`) })
     .catch(error => { console.log(error) })
 })
 
 //刪除功能
-app.get('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
@@ -110,7 +108,7 @@ app.get('/restaurants/:id/delete', (req, res) => {
 })
 
 //瀏覽特定餐廳詳細資料(路由放最後因為放前面會出現cast ObjectId error)
-app.get('/restaurants/:id', (req, res) => {
+app.get('/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
