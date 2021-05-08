@@ -10,7 +10,15 @@ const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.engine('handlebars', exphbs({ defaultLayout: "main" }))
+app.engine('handlebars', exphbs({
+  defaultLayout: "main",
+  helpers: {
+    eq: function (v1, v2) { return (v1 === v2) }
+  }
+})
+)
+
+
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))

@@ -32,11 +32,13 @@
 }
 
 .addButton{
-  border-radius: 30%;
+  border:1px solid orange;
+  border-radius: 25%;
   text-decoration: none;
   color:white;
   background-color:rgb(241, 187, 37);
   padding:0.5rem;
+  margin: 1rem;
 }
 
 a.addButton:hover{

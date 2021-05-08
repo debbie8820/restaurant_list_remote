@@ -2,8 +2,18 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
-      <form action="/restaurants/create">
+      <form action="/restaurants/create" style="display: inline;">
         <button class="addButton">新增餐廳</button>
+      </form>
+      <form action="/sort">
+        <select onchange="this.form.submit()" name="sort" id="sort">
+          <option selected value="sort" disabled>Sort...</option>
+          <option {{#if (eq sort "A-Z" ) }}selected{{/if}} value="A-Z">A-Z</option>
+          <option {{#if (eq sort "Z-A" ) }}selected{{/if}} value="Z-A">Z-A</option>
+          <option {{#if (eq sort "食物類別" ) }}selected{{/if}} value="食物類別">食物類別</option>
+          <option {{#if (eq sort "上傳時間" ) }}selected{{/if}} value="上傳時間">上傳時間</option>
+          <option {{#if (eq sort "評價高低" ) }}selected{{/if}} value="評價高低">評價高低</option>
+        </select>
       </form>
     </div>
     <div class="col-md-10 col-12 mx-auto">
