@@ -1,12 +1,12 @@
 {{!-- partial template --}}
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-10 col-12 mx-auto">
-      <form action="/restaurants/create" style="display: inline;">
+  <div class="row justify-content-center mt-0">
+    <div class="row justify-content-between col-md-10 col-12 mx-auto mt-0">
+      <form class="indexForms" action="/restaurants/create" style="display: inline;vertical-align:baseline">
         <button class="addButton">新增餐廳</button>
       </form>
-      <form action="/sort">
-        <select onchange="this.form.submit()" name="sort" id="sort">
+      <form class="indexForms" action="/sort" style="display: inline;vertical-align:sub">
+        <select class="select" onchange="this.form.submit()" name="sort" id="sort" style="vertical-align:middle;">
           <option selected value="sort" disabled>Sort...</option>
           <option {{#if (eq sort "A-Z" ) }}selected{{/if}} value="A-Z">A-Z</option>
           <option {{#if (eq sort "Z-A" ) }}selected{{/if}} value="Z-A">Z-A</option>
@@ -17,6 +17,9 @@
       </form>
     </div>
     <div class="col-md-10 col-12 mx-auto">
+      <div class="row noSearchedResults justify-content-center mb-5" style="{{#if restaurants}}display: none;{{/if}}">
+        <h4>找不到符合關鍵字的餐廳</h4>
+      </div>
       <div class="card-columns">
         {{#each restaurants}}
         <a href="restaurants/show/{{this._id}}" class="text-secondary">
@@ -24,11 +27,9 @@
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
               <h6 class="card-title mb-1">{{this.name}}</h6>
-
               <div class="restaurant-category mb-1">
                 <i class="fas fa-utensils pr-2"></i> {{this.category}}
               </div>
-
               <span class="badge badge-pill badge-danger font-weight-normal">
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
@@ -41,7 +42,6 @@
           </div>
         </a>
         {{/each}}
-
       </div>
     </div>
   </div>

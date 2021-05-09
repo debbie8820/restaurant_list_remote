@@ -7,7 +7,6 @@ require('./config/mongoose')
 const routes = require('./routes')
 
 const app = express()
-
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.engine('handlebars', exphbs({
@@ -17,7 +16,6 @@ app.engine('handlebars', exphbs({
   }
 })
 )
-
 
 app.set('view engine', 'handlebars')
 

@@ -32,13 +32,16 @@
 }
 
 .addButton{
+  font-size:20px;
   border:1px solid orange;
-  border-radius: 25%;
+  border-radius: 10%;
   text-decoration: none;
   color:white;
   background-color:rgb(241, 187, 37);
-  padding:0.5rem;
-  margin: 1rem;
+  padding:0.2rem;
+  padding-right:2rem;
+  padding-left: 2rem;
+  margin-bottom:0.7rem;
 }
 
 a.addButton:hover{
@@ -143,4 +146,13 @@ button.deleteButton:hover{
   color:wheat;
 }
 
+.noSearchedResults h4{
+  color:rgb(133, 133, 133);
+}
 
+.select{
+  display:inline;
+  border-radius: 0.5rem;
+  width:18rem;
+  height:2rem;
+}
