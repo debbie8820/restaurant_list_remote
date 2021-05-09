@@ -27,7 +27,7 @@
 
 3. 安裝專案需求<br><br/>
 `npm install`
-`npm i nodemondd `
+`npm i nodemon`
 
 4. 新增種子資料
 `npm run seed`
