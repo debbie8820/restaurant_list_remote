@@ -11,8 +11,9 @@ for (i = 0; i < 5; i++) {
 }
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const sort = req.query.sort
-  Restaurant.find()
+  Restaurant.find({ userId })
     .lean()
     .sort(sortObj[sort])
     .then((restaurants => res.render('index', { restaurants, sort })))

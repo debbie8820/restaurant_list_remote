@@ -17,9 +17,17 @@
       </form>
     </div>
     <div class="col-md-10 col-12 mx-auto">
-      <div class="row noSearchedResults justify-content-center mb-5" style="{{#if restaurants}}display: none;{{/if}}">
+      {{#if noRestaurants}}
+      <div class="row noSearchedResults justify-content-center m-5">
+        <h4>趕快新增資料到你的餐廳清單吧！</h4>
+      </div>
+      {{/if}}
+
+      {{#if noResult}}
+      <div class="row noSearchedResults justify-content-center m-5">
         <h4>找不到符合關鍵字的餐廳</h4>
       </div>
+      {{/if}}
       <div class="card-columns">
         {{#each restaurants}}
         <a href="restaurants/show/{{this._id}}" class="text-secondary">
