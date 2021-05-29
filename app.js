@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 
 require('./config/mongoose')
 
@@ -29,6 +30,7 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
+usePassport(app)
 app.use(routes)
 
 app.listen(3000, () => console.log('Server is ready!'))
