@@ -7,13 +7,18 @@ const usePassport = require('./config/passport')
 const flash = require('connect-flash')
 
 require('./config/mongoose')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 
 const routes = require('./routes')
 
 const app = express()
+const PORT = process.env.PORT
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({
-  secret: 'debbieSecret', //只有伺服器知道的的密鑰
+  secret: process.env.SESSION_SECRET, //只有伺服器知道的的密鑰
   resave: false,
   saveUninitialized: true
 }))
@@ -43,4 +48,4 @@ app.use((req, res, next) => {
 
 app.use(routes)
 
-app.listen(3000, () => console.log('Server is ready!'))
+app.listen(PORT, () => console.log('Server is ready!'))
