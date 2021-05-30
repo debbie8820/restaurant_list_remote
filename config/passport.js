@@ -17,7 +17,7 @@ module.exports = (app) => {
             if (isMatch) {
               return done(null, user)
             }
-            return done(null, false, { message: 'Wrong email or password' })
+            return done(null, false, { message: 'Email or password incorrect' })
           })
       })
       .catch(err => console.log(err))

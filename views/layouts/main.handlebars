@@ -12,12 +12,15 @@
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <!-- navigation -->
   <nav class="navbar navbar-light bg-light">
-    <div class="container">
+    <div class="container justify-content-between">
       <a class="navbar-brand" href="/">
         <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
           width="30" height="30" class="d-inline-block align-top" alt="Top Restaurants">
         {{#if isAuthenticated}}{{user.name}}'s{{else}}Top{{/if}} Restaurants
       </a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-info text-white">Logout</a>
+      {{/if}}
     </div>
   </nav>
 </head>
