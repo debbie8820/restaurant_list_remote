@@ -19,18 +19,33 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
+  const errors = []
   if (!email || !password || !confirmPassword) {
-    console.log('有欄位沒填寫')
-    return res.render('register', { name, email, password, confirmPassword })
+    errors.push({ message: '請填寫所有 * 號欄位' })
   }
   if (password !== confirmPassword) {
-    console.log('密碼和確認密碼不符合')
-    return res.render('register', { name, email, password, confirmPassword })
+    errors.push({ message: '密碼和確認密碼不符合' })
+  }
+  if (errors.length) {
+    return res.render('register', {
+      errors,
+      name,
+      email,
+      password,
+      confirmPassword
+    })
   }
   return User.findOne({ email })
     .then(user => {
       if (user) {
-        return console.log('此 Email 已被註冊')
+        errors.push({ message: '此 Email 已被註冊' })
+        return res.render('register', {
+          errors,
+          name,
+          email,
+          password,
+          confirmPassword
+        })
       }
       return bcrypt.genSalt(10)
         .then(salt => bcrypt.hash(password, salt))
@@ -48,8 +63,8 @@ router.post('/register', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.logout() //passport提供的函式，會將session資料清除
+  req.flash('success_msg', '你已成功登出')
   res.redirect('/users/login')
-  console.log('你已成功登出')
 })
 
 module.exports = router
