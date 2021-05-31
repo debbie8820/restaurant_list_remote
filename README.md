@@ -1,6 +1,7 @@
 # Top Restaurants in Taiwan
 這是個為想在喜愛收藏美食的人所設計的簡單網站，讓大家可以將美食收藏在本網頁。</br>
 :point_right:[點我體驗網站! Click me ](https://tranquil-brushlands-31586.herokuapp.com/)
+<<<<<<< HEAD
 
 <img alt="homepage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/restaurants.jpg">
 
@@ -9,10 +10,12 @@
 + 加入Facebook登入功能
 
 <img alt="loginpage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/login.jpg">
+=======
+>>>>>>> 4c47f97 (update README)
 
 <img alt="homepage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/restaurants.jpg">
 
-### 新功能
+### :fire:新功能
 + 加入網站註冊及登入功能
 + 加入Facebook登入功能
 
