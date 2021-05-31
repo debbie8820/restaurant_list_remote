@@ -10,7 +10,8 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
+  failureRedirect: '/users/login',
+  failureFlash: true
 }))
 
 router.get('/register', (req, res) => {
@@ -56,7 +57,10 @@ router.post('/register', (req, res) => {
             password: hash
           })
         })
-        .then(() => res.redirect('/users/login'))
+        .then(() => {
+          req.flash('success_msg', '你已成功註冊')
+          res.redirect('/users/login')
+        })
         .catch(err => console.log(err))
     })
 })
