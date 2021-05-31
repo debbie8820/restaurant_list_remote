@@ -10,8 +10,6 @@
 
 <img alt="loginpage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/login.jpg">
 
-<img alt="homepage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/restaurants.jpg">
-
 ### 功能
 + 快速瀏覽餐廳的概括資訊
 + 用關鍵字搜尋餐廳
