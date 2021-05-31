@@ -10,7 +10,7 @@
 
 <img alt="loginpage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/login.jpg">
 
-<img alt="homepage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/restautants.jpg">
+<img alt="homepage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/restaurants.jpg">
 
 ### 新功能
 + 加入網站註冊及登入功能
