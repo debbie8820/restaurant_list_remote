@@ -1,7 +1,7 @@
 # Top Restaurants in Taiwan
 這是個為想在喜愛收藏美食的人所設計的簡單網站，讓大家可以將美食收藏在本網頁。
 
-<img alt="homepage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/restautants.jpg">
+<img alt="homepage" src="https://github.com/debbie8820/restaurant_list_remote/blob/main/public/img/restaurants.jpg">
 
 ### 新功能
 + 加入網站註冊及登入功能
