@@ -9,11 +9,21 @@
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="Restaurant Name..."
             aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
+          <div>
+            <select class="select" name="sort" id="sort" style="vertical-align:middle;">
+              <option selected value="sort" disabled>Sort from A-Z ...</option>
+              <option {{#if (eq sort "AZ" ) }}selected{{/if}} value="AZ">A-Z</option>
+              <option {{#if (eq sort "ZA" ) }}selected{{/if}} value="ZA">Z-A</option>
+              <option {{#if (eq sort "category" ) }}selected{{/if}} value="category">食物類別</option>
+              <option {{#if (eq sort "timeO" ) }}selected{{/if}} value="timeO">上傳時間(舊-新)</option>
+              <option {{#if (eq sort "timeN" ) }}selected{{/if}} value="timeN">上傳時間(新-舊)</option>
+              <option {{#if (eq sort "rating" ) }}selected{{/if}} value="rating">評價高低</option>
+            </select>
+          </div>
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
         </div>
-      </form>
     </div>
   </div>
 </div>
@@ -25,17 +35,8 @@
       <form class="indexForms" action="/restaurants/create" style="display: inline;vertical-align:baseline">
         <button class="addButton"><b>新增餐廳</b></button>
       </form>
-      <form class="indexForms" action="/sort" style="display: inline;vertical-align:sub">
-        <select class="select" onchange="this.form.submit()" name="sort" id="sort" style="vertical-align:middle;">
-          <option selected value="sort" disabled>Sort...</option>
-          <option {{#if (eq sort "A-Z" ) }}selected{{/if}} value="A-Z">A-Z</option>
-          <option {{#if (eq sort "Z-A" ) }}selected{{/if}} value="Z-A">Z-A</option>
-          <option {{#if (eq sort "食物類別" ) }}selected{{/if}} value="食物類別">食物類別</option>
-          <option {{#if (eq sort "上傳時間" ) }}selected{{/if}} value="上傳時間">上傳時間</option>
-          <option {{#if (eq sort "評價高低" ) }}selected{{/if}} value="評價高低">評價高低</option>
-        </select>
-      </form>
     </div>
+
     <div class="col-md-10 col-12 mx-auto">
       {{#if noRestaurants}}
       <div class="row noSearchedResults justify-content-center m-5">

@@ -170,7 +170,9 @@ button.deleteButton:hover{
 
 .select{
   display:inline;
-  border-radius: 0.5rem;
   width:18rem;
-  height:2rem;
+  height: 100%;
+  border: 1px solid #ced4da;
+  margin-left:1.2rem;
+  border-radius: 5px;
 }
