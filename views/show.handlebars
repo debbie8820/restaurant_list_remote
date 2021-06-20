@@ -1,13 +1,22 @@
 <div class="container">
   <div class="d-flex flex-column align-items-center">
-    <h1 class="py-4 restaurant-show-title">{{specificRestaurant.name}}</h1>
+    <h1 class="py-4 restaurant-show-title mt-3"><b>{{specificRestaurant.name}}</b></h1>
     <div class="d-flex justify-content-center">
-      <a class="show editButton" href="/restaurants/{{specificRestaurant._id}}/edit">修改資訊</a>
+      <a class="show editButton" href="/restaurants/{{specificRestaurant._id}}/edit"><b>修改資訊</b></a>
       <form action="/restaurants/{{specificRestaurant._id}}?_method=DELETE" method="POST" style="display:inline;">
-        <button class="show deleteButton" type="submit">刪除餐廳</button>
+        <button class="show deleteButton" type="submit"><b>刪除餐廳</b></button>
       </form>
     </div>
     <div class="col-12 col-md-10 mx-auto">
+
+      <p class="mb-1 mr-1">
+        <span class="text-secondary">
+          <i class="fas fa-globe pr-1"></i>
+          英文：
+        </span>
+        {{specificRestaurant.name_en}}
+      </p>
+
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-star pr-1"></i>

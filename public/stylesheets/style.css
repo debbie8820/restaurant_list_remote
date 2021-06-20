@@ -1,9 +1,18 @@
+i{
+  width:18px;
+  height:16px;
+}
+
 .navbar .navbar-brand {
   color: #fce2cf;
 }
 
 .navbar .navbar-brand:hover {
   color: #226089;
+}
+
+a.text-secondary:hover{
+  text-decoration: none;
 }
 
 .banner {
@@ -33,20 +42,21 @@
 
 .addButton{
   font-size:20px;
-  border:1px solid orange;
   border-radius: 5px;
+  border:none;
   text-decoration: none;
   color:white;
-  background-color:rgb(241, 187, 37);
+  background-color:rgb(243, 203, 70);
   padding:0.2rem;
   padding-right:2rem;
   padding-left: 2rem;
   margin-bottom:0.7rem;
 }
 
-a.addButton:hover{
-  color:#e47814;
+.addButton:hover{
+  color:#d37823;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .editButton, .deleteButton{
@@ -57,24 +67,28 @@ a.addButton:hover{
   color:white;
   padding:0.2rem;
   margin:0.5rem;
+  transition: 0.3s;
 }
 
 .editButton{
-  background-color: #ffd7b5;
+  background-color: #f3a806;
+  margin-right: 0;
 }
 
 .deleteButton{
-  background-color: #83d6b7;
+  background-color: #83b5f7;
 }
 
 a.editButton:hover{
-  color:#e47814;
+  color:#9c8668;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 button.deleteButton:hover{
-  color:#22b684;
+  color:#101113;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .show{
@@ -139,7 +153,11 @@ button.deleteButton:hover{
   border: none;
   border-radius: 0.5rem;
   font-size: 1rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 1.2rem;
+}
+
+.saveButton h6{
+  margin-bottom: 0px;
 }
 
 .saveButton:hover{
