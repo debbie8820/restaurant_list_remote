@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       }
       return res.render('index', { restaurants })
     }))
-    .catch(error => { console.log(error) })
+    .catch(err => res.render('error', { err }))
 })
 
 module.exports = router

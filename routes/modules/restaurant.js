@@ -33,7 +33,7 @@ router.get('/search', (req, res) => {
       }
       return res.render('index', { restaurants, keyword, sort })
     })
-    .catch(error => { console.log(error) })
+    .catch(err => res.render('error', { err }))
 })
 
 //新增功能
@@ -46,7 +46,7 @@ router.post('/create', (req, res) => {
   req.body.userId = req.user._id
   return Restaurant.create(req.body)
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+    .catch(err => res.render('error', { err }))
 })
 
 //修改餐廳資訊
@@ -56,7 +56,7 @@ router.get('/:id/edit', (req, res) => {
   return Restaurant.findOne({ _id, userId })
     .lean()
     .then(restaurant => { res.render('edit', { restaurant }) })
-    .catch(error => { console.log(error) })
+    .catch(err => res.render('error', { err }))
 })
 
 router.put('/:id', (req, res) => {
@@ -68,7 +68,7 @@ router.put('/:id', (req, res) => {
       return restaurant.save()
     })
     .then(() => { res.redirect(`./show/${_id}`) })
-    .catch(error => { console.log(error) })
+    .catch(err => res.render('error', { err }))
 })
 
 //刪除功能
@@ -78,7 +78,7 @@ router.delete('/:id', (req, res) => {
   return Restaurant.findOne({ _id, userId })
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
-    .catch(error => { console.log(error) })
+    .catch(err => res.render('error', { err }))
 });
 
 //瀏覽特定餐廳詳細資料(路由放最後因為放前面會出現cast ObjectId error)
@@ -87,8 +87,8 @@ router.get('/show/:id', (req, res) => {
   const { id: _id } = req.params
   return Restaurant.findOne({ _id, userId })
     .lean()
-    .then(specificRestaurant => res.render('show', { specificRestaurant }))
-    .catch(error => { console.log(error) })
+    .then(specificRestaurant => { return res.render('show', { specificRestaurant }) })
+    .catch(err => { return res.render('error', { err }) })
 })
 
 module.exports = router

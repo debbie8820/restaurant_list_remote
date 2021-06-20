@@ -4,9 +4,7 @@ const bcrypt = require('bcryptjs')
 const User = require('../../models/user')
 const passport = require('passport')
 
-router.get('/login', (req, res) => {
-  res.render('login')
-})
+router.get('/login', (req, res) => { return res.render('login') })
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
@@ -14,9 +12,7 @@ router.post('/login', passport.authenticate('local', {
   failureFlash: true
 }))
 
-router.get('/register', (req, res) => {
-  res.render('register')
-})
+router.get('/register', (req, res) => { return res.render('register') })
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
@@ -56,19 +52,19 @@ router.post('/register', (req, res) => {
             email,
             password: hash
           })
+            .then(() => {
+              req.flash('success_msg', '你已成功註冊')
+              return res.redirect('/users/login')
+            })
         })
-        .then(() => {
-          req.flash('success_msg', '你已成功註冊')
-          res.redirect('/users/login')
-        })
-        .catch(err => console.log(err))
+        .catch(err => res.render('error', { err }))
     })
 })
 
 router.get('/logout', (req, res) => {
   req.logout() //passport提供的函式，會將session資料清除
   req.flash('success_msg', '你已成功登出')
-  res.redirect('/users/login')
+  return res.redirect('/users/login')
 })
 
 module.exports = router
