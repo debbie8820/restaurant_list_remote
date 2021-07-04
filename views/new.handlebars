@@ -3,18 +3,20 @@
     <div class="d-flex justify-content-center mb-2">
       <span class="form-heading"><b>新增餐廳</b></span>
     </div>
+    {{>message}}
     <form action="/restaurants/create" method="POST">
       <div class="input-group">
         <label for="name">*餐廳名稱</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="日日鮮" required>
+        <input type="text" class="form-control" id="name" name="name" placeholder="日日鮮" value="{{name}}" required>
       </div>
       <div class="input-group">
         <label for="name_en">英文名稱</label>
-        <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Tonkatsu">
+        <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Tonkatsu" value="{{name_en}}">
       </div>
       <div class="input-group">
         <label for="category">*類別</label>
-        <input list="categories" name="category" class="form-control" id="category" placeholder="日式" required>
+        <input list="categories" name="category" class="form-control" id="category" placeholder="日式"
+          value="{{category}}" required>
         <datalist id="categories">
           <option value="義式餐廳">
           <option value="中東料理">
@@ -25,28 +27,30 @@
       </div>
       <div class="input-group">
         <label for="image">圖片</label>
-        <input type="url" class="form-control" id="image" name="image" placeholder="http://...">
+        <input type="url" class="form-control" id="image" name="image" placeholder="http://..." value="{{image}}">
       </div>
       <div class="input-group">
         <label for="location">地點</label>
-        <input type="text" class="form-control" id="location" name="location" placeholder="台北市...">
+        <input type="text" class="form-control" id="location" name="location" placeholder="台北市..." value="{{location}}">
       </div>
       <div class="input-group">
-        <label for="phone">電話</label>
-        <input type="tel" class="form-control" id="phone" name="phone" placeholder="0223557754">
+        <label for="tel">電話</label>
+        <input type="tel" class="form-control" id="tel" name="tel" placeholder="0223557754" value="{{tel}}">
       </div>
       <div class="input-group">
         <label for="google_map">Google Map</label>
-        <input type="url" class="form-control" id="google_map" name="google_map" placeholder="http://...">
+        <input type="url" class="form-control" id="google_map" name="google_map" placeholder="http://..."
+          value="{{google_map}}">
       </div>
       <div class="input-group">
         <label for="rating">*評分</label>
         <input type="number" step="0.1" min="1" max="5" class="form-control" id="rating" placeholder="4.3" name="rating"
-          required>
+          value="{{rating}}" required>
       </div>
       <div class="input-group">
         <label for="description">餐廳描述</label>
-        <textarea class="form-control" id="description" name="description" placeholder="這間餐廳的食物..."></textarea>
+        <textarea class="form-control" id="description" name="description"
+          placeholder="這間餐廳的食物...(100字以內)">{{#if description}}{{description}}{{/if}}</textarea>
       </div>
       <div class="d-flex justify-content-center mt-2">
         <button class="saveButton" type="submit"><b>

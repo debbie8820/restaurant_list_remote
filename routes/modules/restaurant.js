@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
+const validator = require('../../middleware/validator')
 const sortTypes = {
   AZ: { name: 'asc' },
   ZA: { name: 'desc' },
@@ -39,12 +40,22 @@ router.get('/search', (req, res) => {
 //新增功能
 router.get('/create', (req, res) => res.render('new'))
 
-router.post('/create', (req, res) => {
+router.post('/create', validator.restaurant, (req, res) => {
+  const { name, category, rating, description, name_en, tel, image, google_map } = req.body
   if (!req.body.image) {
     req.body.image = 'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5628/02.jpg'
   }
-  req.body.userId = req.user._id
-  return Restaurant.create(req.body)
+  return Restaurant.create({
+    userId: req.user._id,
+    name,
+    category,
+    rating,
+    description,
+    name_en,
+    tel,
+    image: req.body.image,
+    google_map
+  })
     .then(() => res.redirect('/'))
     .catch(err => res.render('error', { err }))
 })
@@ -59,9 +70,10 @@ router.get('/:id/edit', (req, res) => {
     .catch(err => res.render('error', { err }))
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', validator.restaurant, (req, res) => {
   const { _id: userId } = req.user
   const { id: _id } = req.params
+
   return Restaurant.findOne({ _id, userId })
     .then((restaurant) => {
       Object.assign(restaurant, req.body)
