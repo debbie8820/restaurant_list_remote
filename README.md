@@ -42,6 +42,17 @@
 `npm run dev`
 當終端機顯示`ready!`時即可到 http://localhost:3000 查看專案
 
+6. 可使用下方的種子資料登入：<br>
+```
+ 使用者1號
+ email: user1@example.com
+ password: 12345678
+ 
+ 使用者2號
+ email: user2@example.com
+ password: 12345678
+```
+
 ### 撰寫者
 Debbie Chang
 
