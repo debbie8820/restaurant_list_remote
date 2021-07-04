@@ -43,6 +43,7 @@ router.post('/register', validator.register, (req, res, next) => {
               req.flash('success_msg', '你已成功註冊')
               return res.redirect('/users/login')
             })
+            .catch(err => next(err))
         })
         .catch(err => next(err))
     })
