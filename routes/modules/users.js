@@ -15,7 +15,7 @@ router.post('/login', passport.authenticate('local', {
 
 router.get('/register', (req, res) => { return res.render('register') })
 
-router.post('/register', validator.register, (req, res) => {
+router.post('/register', validator.register, (req, res, next) => {
   const { name, email, password, confirmPassword } = req.body
 
   return User.findOne({ email })
@@ -44,7 +44,7 @@ router.post('/register', validator.register, (req, res) => {
               return res.redirect('/users/login')
             })
         })
-        .catch(err => res.render('error', { err }))
+        .catch(err => next(err))
     })
 })
 

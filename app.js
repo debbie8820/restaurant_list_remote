@@ -47,6 +47,9 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use(routes)
-
 app.listen(PORT, () => console.log('Server is ready!'))
+
+app.use(routes)
+app.use((err, req, res, next) => {
+  return res.status(500).json({ Error: String(err) })
+})

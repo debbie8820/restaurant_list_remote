@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   const userId = req.user._id
   Restaurant.find({ userId })
     .lean()
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       }
       return res.render('index', { restaurants })
     }))
-    .catch(err => res.render('error', { err }))
+    .catch(err => next(err))
 })
 
 module.exports = router

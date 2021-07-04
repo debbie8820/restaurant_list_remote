@@ -12,7 +12,7 @@ const sortTypes = {
 }
 
 //搜尋功能(根據中、英文名稱和類別搜尋) + 篩選功能
-router.get('/search', (req, res) => {
+router.get('/search', (req, res, next) => {
   const { keyword } = req.query
   const { _id: userId } = req.user
   const sort = req.query.sort ? req.query.sort : 'AZ'
@@ -34,13 +34,13 @@ router.get('/search', (req, res) => {
       }
       return res.render('index', { restaurants, keyword, sort })
     })
-    .catch(err => res.render('error', { err }))
+    .catch(err => next(err))
 })
 
 //新增功能
 router.get('/create', (req, res) => res.render('new'))
 
-router.post('/create', validator.restaurant, (req, res) => {
+router.post('/create', validator.restaurant, (req, res, next) => {
   const { name, category, rating, description, name_en, tel, image, google_map } = req.body
   if (!req.body.image) {
     req.body.image = 'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5628/02.jpg'
@@ -57,50 +57,60 @@ router.post('/create', validator.restaurant, (req, res) => {
     google_map
   })
     .then(() => res.redirect('/'))
-    .catch(err => res.render('error', { err }))
+    .catch(err => next(err))
 })
 
 //修改餐廳資訊
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', (req, res, next) => {
   const { _id: userId } = req.user
   const { id: _id } = req.params
   return Restaurant.findOne({ _id, userId })
     .lean()
-    .then(restaurant => { res.render('edit', { restaurant }) })
-    .catch(err => res.render('error', { err }))
+    .then(restaurant => {
+      if (!restaurant) throw new Error('查無此餐廳')
+      res.render('edit', { restaurant })
+    })
+    .catch(err => next(err))
 })
 
-router.put('/:id', validator.restaurant, (req, res) => {
+router.put('/:id', validator.restaurant, (req, res, next) => {
   const { _id: userId } = req.user
   const { id: _id } = req.params
 
   return Restaurant.findOne({ _id, userId })
     .then((restaurant) => {
+      if (!restaurant) throw new Error('查無此餐廳')
       Object.assign(restaurant, req.body)
       return restaurant.save()
     })
     .then(() => { res.redirect(`./show/${_id}`) })
-    .catch(err => res.render('error', { err }))
+    .catch(err => next(err))
 })
 
 //刪除功能
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res, next) => {
   const { _id: userId } = req.user
   const { id: _id } = req.params
   return Restaurant.findOne({ _id, userId })
-    .then(restaurant => restaurant.remove())
+    .then(restaurant => {
+      if (!restaurant) throw new Error('查無此餐廳')
+      restaurant.remove()
+    })
     .then(() => res.redirect('/'))
-    .catch(err => res.render('error', { err }))
+    .catch(err => next(err))
 });
 
 //瀏覽特定餐廳詳細資料(路由放最後因為放前面會出現cast ObjectId error)
-router.get('/show/:id', (req, res) => {
+router.get('/show/:id', (req, res, next) => {
   const { _id: userId } = req.user
   const { id: _id } = req.params
   return Restaurant.findOne({ _id, userId })
     .lean()
-    .then(specificRestaurant => { return res.render('show', { specificRestaurant }) })
-    .catch(err => { return res.render('error', { err }) })
+    .then(specificRestaurant => {
+      if (!specificRestaurant) throw new Error('查無此餐廳')
+      return res.render('show', { specificRestaurant })
+    })
+    .catch(err => next(err))
 })
 
 module.exports = router
